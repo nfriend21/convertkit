@@ -28,7 +28,7 @@ module ConvertKit
       @created_at       ||= data["created_at"]
       @updated_at       ||= data["updated_at"]
     end
-    
+
     def initialize(id, client)
       @id     = id
       @client = client
@@ -36,6 +36,7 @@ module ConvertKit
 
     def subscribe(params)
       opts = {email: nil, fname: nil, course_opted: true}.merge(params)
+      binding.pry
       @client.post_request("/forms/#{@id}/subscribe", opts)
     end
 
@@ -56,5 +57,5 @@ module ConvertKit
       forms
     end
   end
-  
+
 end
